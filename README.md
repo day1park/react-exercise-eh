@@ -68,3 +68,4 @@ Your task is to create a simple table of contacts, with two filters.
 <br/>
 
 ##### This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+event hub react exercise
