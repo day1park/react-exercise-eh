@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-
 import './App.css'
-
 import Header from './header'
 import Table from './table'
-
 import getContacts from './data/get-contacts'
+
+
+let data = getContacts();
 
 class App extends Component {
 
@@ -18,14 +18,52 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    data
+      .then(response => {
+        this.setState({
+          contacts: response
+        })
+      });
+  }
+
+
   render() {
+
+
     return (
       <div>
         <Header />
         <div className="Toolbar" >
+          <table>
+            <tbody>
+              <tr>
+                <th>
+                  name filter
+                </th>
+                <th>
+                  state filter
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  <input></input>
+                </td>
+                <select ref="state">
+                  <option>all</option>
+                  <option>blah</option>
+                  <option>blah</option>
+                  {this.state.stateFilter}
+                </select>
+                <td>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        {/*<Table />*/}
-      </div>
+        <Table contacts={this.state.contacts} />
+      </div >
     )
   }
 }
