@@ -2,7 +2,17 @@
 import React, { Component } from 'react'
 
 class Row extends Component {
+
+
+
     render() {
+        let state;
+        if (this.props.contact.profile.address) {
+            state = this.props.contact.profile.address.state
+        } else {
+            state = '';
+        }
+
         return (
             <div className="Row">
                 <div className="contact">
@@ -32,8 +42,8 @@ class Row extends Component {
                             {this.props.contact.profile.company} -
                     </td>
                         <td>
-                            state
-                    </td>
+                            {state}
+                        </td>
                     </tr>
                 </div>
             </div>
