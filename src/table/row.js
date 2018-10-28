@@ -6,10 +6,10 @@ class Row extends Component {
     render() {
         let contactInfo = this.props.contact;
         let state;
-        if (contactInfo.profile.address) {
+        if (contactInfo.profile.address && contactInfo.profile.address.state) {
             state = contactInfo.profile.address.state
         } else {
-            state = 'n/a';
+            state = '- - -';
         }
 
         return (

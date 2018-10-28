@@ -23,11 +23,11 @@ class App extends Component {
       nameFilter: value
     });
   }
-
-  //   let filterName = this.state.contacts.filter((contact) => {
-  //   return contact.name.toLowerCase().indexOf(this.state.nameFilter.toLowerCase()) >= 0
+  // updateStateFilter(value) {
+  //   this.setState({
+  //     stateFilter: value
+  //   });
   // }
-  // );
 
   componentDidMount() {
     data
@@ -38,41 +38,22 @@ class App extends Component {
       });
   }
 
+
+
   render() {
-    console.log(this.state.nameFilter)
     return (
       <div>
         <Header />
         <div className="Toolbar" >
-          <table>
-            <tbody>
-              <tr>
-                <th>
-                  name filter
-                </th>
-                <th>
-                  state filter
-                </th>
-              </tr>
-              <tr>
-                <td>
-                  <Search
-                    nameFilter={this.state.nameFilter}
-                    updateNameFilter={this.updateNameFilter.bind(this)}
-                  />
-                </td>
-                <td>
-                  <select ref="state">
-                    <option>all</option>
-                    <option>blah</option>
-                    <option>blah</option>
-                    {this.state.stateFilter}
-                  </select>
-                </td>
 
-              </tr>
-            </tbody>
-          </table>
+          <Search
+            nameFilter={this.state.nameFilter}
+            updateNameFilter={this.updateNameFilter.bind(this)}
+            // stateFilter={this.state.stateFilter}
+            // updateStateFilter={this.updateStateFilter.bind(this)}
+            contacts={this.state.contacts}
+          />
+
         </div>
         <Table
           contacts={this.state.contacts}

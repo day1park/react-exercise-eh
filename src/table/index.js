@@ -18,6 +18,7 @@ class Table extends Component {
                 );
             })
 
+
         return (
             <div className="Table" >
                 <table>
