@@ -10,43 +10,25 @@ class Row extends Component {
         if (this.props.contact.profile.address) {
             state = this.props.contact.profile.address.state
         } else {
-            state = '';
+            state = 'n/a';
         }
 
         return (
-            <div className="Row">
-                <div className="contact">
-                    <tr>
-                        <th>
-                            Name
-                    </th>
-                        <th>
-                            Email
-                    </th>
-                        <th>
-                            Company
-                    </th>
-                        <th>
-                            State
-                    </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            {this.props.contact.firstName} -
-                        {this.props.contact.lastName}
-                        </td>
-                        <td>
-                            {this.props.contact.email} -
-                    </td>
-                        <td>
-                            {this.props.contact.profile.company} -
-                    </td>
-                        <td>
-                            {state}
-                        </td>
-                    </tr>
-                </div>
-            </div>
+            <tr className="Row">
+                <td className="name">
+                    {this.props.contact.firstName} {" "}
+                    {this.props.contact.lastName}
+                </td>
+                <td className="email">
+                    {this.props.contact.email}
+                </td>
+                <td className="company">
+                    {this.props.contact.profile.company}
+                </td>
+                <td className="state">
+                    {state}
+                </td>
+            </tr>
         )
     }
 }

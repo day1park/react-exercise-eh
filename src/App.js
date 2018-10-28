@@ -49,15 +49,15 @@ class App extends Component {
                 <td>
                   <input></input>
                 </td>
-                <select ref="state">
-                  <option>all</option>
-                  <option>blah</option>
-                  <option>blah</option>
-                  {this.state.stateFilter}
-                </select>
                 <td>
-
+                  <select ref="state">
+                    <option>all</option>
+                    <option>blah</option>
+                    <option>blah</option>
+                    {this.state.stateFilter}
+                  </select>
                 </td>
+
               </tr>
             </tbody>
           </table>

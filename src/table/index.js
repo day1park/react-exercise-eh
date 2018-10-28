@@ -19,6 +19,20 @@ class Table extends Component {
             <div className="Table">
                 <table>
                     <tbody>
+                        <tr>
+                            <th className="name">
+                                Name
+                            </th>
+                            <th className="email">
+                                Email
+                            </th>
+                            <th className="company">
+                                Company
+                            </th>
+                            <th className="state">
+                                State
+                            </th>
+                        </tr>
 
                         {contacts}
 
