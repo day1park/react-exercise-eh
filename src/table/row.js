@@ -6,9 +6,10 @@ class Row extends Component {
 
 
     render() {
+        let contactInfo = this.props.contact;
         let state;
-        if (this.props.contact.profile.address) {
-            state = this.props.contact.profile.address.state
+        if (contactInfo.profile.address) {
+            state = contactInfo.profile.address.state
         } else {
             state = 'n/a';
         }
@@ -16,14 +17,14 @@ class Row extends Component {
         return (
             <tr className="Row">
                 <td className="name">
-                    {this.props.contact.firstName} {" "}
-                    {this.props.contact.lastName}
+                    {contactInfo.firstName}{" "}
+                    {contactInfo.lastName}
                 </td>
                 <td className="email">
-                    {this.props.contact.email}
+                    {contactInfo.email}
                 </td>
                 <td className="company">
-                    {this.props.contact.profile.company}
+                    {contactInfo.profile.company}
                 </td>
                 <td className="state">
                     {state}
