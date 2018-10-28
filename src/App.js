@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import './App.css'
 import Header from './header'
 import Table from './table'
+import Search from './search/search';
 import getContacts from './data/get-contacts'
-
 
 let data = getContacts();
 
@@ -18,6 +18,17 @@ class App extends Component {
     }
   }
 
+  updateNameFilter(value) {
+    this.setState({
+      nameFilter: value
+    });
+  }
+
+  //   let filterName = this.state.contacts.filter((contact) => {
+  //   return contact.name.toLowerCase().indexOf(this.state.nameFilter.toLowerCase()) >= 0
+  // }
+  // );
+
   componentDidMount() {
     data
       .then(response => {
@@ -27,10 +38,8 @@ class App extends Component {
       });
   }
 
-
   render() {
-
-
+    console.log(this.state.nameFilter)
     return (
       <div>
         <Header />
@@ -47,7 +56,10 @@ class App extends Component {
               </tr>
               <tr>
                 <td>
-                  <input></input>
+                  <Search
+                    nameFilter={this.state.nameFilter}
+                    updateNameFilter={this.updateNameFilter.bind(this)}
+                  />
                 </td>
                 <td>
                   <select ref="state">
@@ -62,7 +74,10 @@ class App extends Component {
             </tbody>
           </table>
         </div>
-        <Table contacts={this.state.contacts} />
+        <Table
+          contacts={this.state.contacts}
+          nameFilter={this.state.nameFilter}
+        />
       </div >
     )
   }

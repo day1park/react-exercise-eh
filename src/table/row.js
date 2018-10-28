@@ -3,8 +3,6 @@ import React, { Component } from 'react'
 
 class Row extends Component {
 
-
-
     render() {
         let contactInfo = this.props.contact;
         let state;
