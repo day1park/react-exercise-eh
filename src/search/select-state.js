@@ -2,14 +2,25 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 const SelectState = ({ stateFilter, onSelectState }) => {
-    return <select onChange={(e) => onSelectState(e.target.value)}>
+
+    const filteredStates = [... new Set(stateFilter.map(state => {
+        if (state.profile.address && state.profile.address.state) {
+            return state.profile.address.state
+
+        } else {
+
+        }
+
+    }))]
+    console.log(filteredStates)
+
+    return <select onChange={(e) => onSelectState(e.target.value)}><option>Select State</option>
         {
-            stateFilter.map(state => {
-                if (state.profile.address && state.profile.address.state) {
-                    const stateOption = state.profile.address.state
-                    return <option key={stateOption} value={stateOption}>{stateOption}</option>
+            filteredStates.map(state => {
+                if (state !== undefined) {
+                    return <option key={state} value={state}>{state}</option>
                 } else {
-                    state = null
+
                 }
             })
         }
@@ -17,6 +28,7 @@ const SelectState = ({ stateFilter, onSelectState }) => {
 }
 
 SelectState.propTypes = {
+    // filteredStates: PropTypes.array.isRequired,
     stateFilter: PropTypes.array.isRequired,
     onSelectState: PropTypes.func
 };
