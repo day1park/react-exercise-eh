@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import './App.css'
 import Header from './header'
 import Table from './table'
-import Search from './search/search';
+import Search from './search/search'
+import SelectState from './search/select-state'
 import getContacts from './data/get-contacts'
 
 let data = getContacts();
@@ -23,11 +24,10 @@ class App extends Component {
       nameFilter: value
     });
   }
-  // updateStateFilter(value) {
-  //   this.setState({
-  //     stateFilter: value
-  //   });
-  // }
+
+  onSelectState(stateOption) {
+    console.log('state selected!' + stateOption)
+  }
 
   componentDidMount() {
     data
@@ -38,22 +38,34 @@ class App extends Component {
       });
   }
 
-
-
   render() {
     return (
       <div>
         <Header />
         <div className="Toolbar" >
-
-          <Search
-            nameFilter={this.state.nameFilter}
-            updateNameFilter={this.updateNameFilter.bind(this)}
-            // stateFilter={this.state.stateFilter}
-            // updateStateFilter={this.updateStateFilter.bind(this)}
-            contacts={this.state.contacts}
-          />
-
+          <table>
+            <tbody>
+              <tr>
+                <th>
+                  Name
+                </th>
+                <th>
+                  State
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  <Search
+                    nameFilter={this.state.nameFilter}
+                    updateNameFilter={this.updateNameFilter.bind(this)}
+                  />
+                </td>
+                <td>
+                  <SelectState stateFilter={this.state.contacts} onSelectState={this.onSelectState} />
+                </td>
+              </tr >
+            </tbody >
+          </table >
         </div>
         <Table
           contacts={this.state.contacts}
