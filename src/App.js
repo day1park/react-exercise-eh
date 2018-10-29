@@ -15,7 +15,7 @@ class App extends Component {
     this.state = {
       contacts: [],
       nameFilter: '',
-      stateFilter: '',
+      stateFilter: ''
     }
   }
 
@@ -25,8 +25,12 @@ class App extends Component {
     });
   }
 
-  onSelectState(stateOption) {
-    console.log('state selected!' + stateOption)
+  updateStateFilter(value) {
+    this.setState({
+      stateFilter: value
+
+    });
+    console.log('state selected! ' + this.state.stateFilter)
   }
 
   componentDidMount() {
@@ -61,7 +65,10 @@ class App extends Component {
                   />
                 </td>
                 <td>
-                  <SelectState stateFilter={this.state.contacts} onSelectState={this.onSelectState} />
+                  <SelectState
+                    stateFilter={this.state.contacts}
+                    updateStateFilter={this.updateStateFilter.bind(this)}
+                  />
                 </td>
               </tr >
             </tbody >

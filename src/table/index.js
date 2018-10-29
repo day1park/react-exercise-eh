@@ -8,7 +8,6 @@ class Table extends Component {
         const { contacts, nameFilter } = this.props;
         const contactList = contacts
             .filter(contact => {
-                // filter through both first and last names of contacts
                 let contactName = contact.firstName.toLowerCase() + contact.lastName.toLowerCase()
                 return contactName.indexOf(nameFilter.toLowerCase()) !== -1
             })
@@ -17,7 +16,6 @@ class Table extends Component {
                     <Row key={contact.id} contact={contact} />
                 );
             })
-
 
         return (
             <div className="Table" >
