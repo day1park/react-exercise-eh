@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-
 import './App.css'
-
 import Header from './header'
 import Table from './table'
-
+import Search from './search/search'
+import SelectState from './search/select-state'
 import getContacts from './data/get-contacts'
+
+let data = getContacts();
 
 class App extends Component {
 
@@ -14,18 +15,70 @@ class App extends Component {
     this.state = {
       contacts: [],
       nameFilter: '',
-      stateFilter: '',
+      stateFilter: ''
     }
+  }
+
+  updateNameFilter(value) {
+    this.setState({
+      nameFilter: value
+    });
+  }
+
+  updateStateFilter(value) {
+    this.setState({
+      stateFilter: value
+
+    });
+    console.log('state selected! ' + this.state.stateFilter)
+  }
+
+  componentDidMount() {
+    data
+      .then(response => {
+        this.setState({
+          contacts: response
+        })
+      });
   }
 
   render() {
     return (
       <div>
-        {/*<Header />*/}
+        <Header />
         <div className="Toolbar" >
+          <table>
+            <tbody>
+              <tr>
+                <th>
+                  Name
+                </th>
+                <th>
+                  State
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  <Search
+                    nameFilter={this.state.nameFilter}
+                    updateNameFilter={this.updateNameFilter.bind(this)}
+                  />
+                </td>
+                <td>
+                  <SelectState
+                    stateFilter={this.state.contacts}
+                    updateStateFilter={this.updateStateFilter.bind(this)}
+                  />
+                </td>
+              </tr >
+            </tbody >
+          </table >
         </div>
-        {/*<Table />*/}
-      </div>
+        <Table
+          contacts={this.state.contacts}
+          nameFilter={this.state.nameFilter}
+        />
+      </div >
     )
   }
 }
