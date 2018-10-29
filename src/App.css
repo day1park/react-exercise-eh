@@ -14,19 +14,48 @@
   min-height: 10vh;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
 .Table {
   background-color: #282c34;
-  min-height: 75vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: inherit;
+  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+td {
+text-align: center;
+padding: 10px;
+}
+
+.Row, table, th {
+  border: 1px solid gray;
+  padding: 10px;
+}
+
+
+/* - TOOL BAR - */
+
+input.Search {
+  width: 100%;
+  padding: 8px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+select {
+height: 29px;
+overflow: hidden;
+width: 240px;
 }
